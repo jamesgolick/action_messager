@@ -39,6 +39,17 @@ task :gem => :tag_warn
 task :compile do
 end
 
+namespace :gem do
+  namespace :upload do
+    desc 'Upload gems to rubyforge.org'
+    task :rubyforge => :gem do
+      sh 'rubyforge login'
+      sh "rubyforge add_release giraffesoft action_messager #{ActionMessager::Version::STRING} pkg/#{spec.full_name}.gem"
+      sh "rubyforge add_file giraffesoft action_messager #{ActionMessager::Version::STRING} pkg/#{spec.full_name}.gem"
+    end
+  end
+end
+
 task :install => [:clobber, :compile, :package] do
   sh "sudo gem install pkg/#{spec.full_name}.gem"
 end
