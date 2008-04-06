@@ -1,0 +1,37 @@
+= ActionMessager
+
+ActionMessager is dead simple IM notifications for your app.
+
+== Get It
+  
+    $ sudo gem install action_messager
+    
+    ... or get the source ...
+    
+    $ git clone git@github.com:giraffesoft/action_messager.git
+    
+== Usage
+
+ActionMessager works just like ActionMailer. All you have to do start sending IM notifications to your users is subclass ActionMessager::Base; then, create a method that sets an array of recipients, and returns the message you'd like to send:
+
+  class JabberNotifier < ActionMessager::Base
+    def friendship_request(friendship_request)
+      @recipients = friendship_request.receiver.jabber_contact
+      
+      "You have received a friendship request from #{friendship_request.sender.name}! Click here to accept or decline: #{friendship_request.url}"
+    end
+  end
+  
+Then, wherever you'd like to send the notification:
+
+  JabberNotifier.deliver_friendship_request(friendship_request)
+  
+That's it!
+
+== Credits
+
+ActionMessager was created, and is maintained by {James Golick}[http://jamesgolick.com].
+
+== License
+
+ActionMessager is Copyright (c) 2008 James Golick, GiraffeSoft, Inc. It is released under the {MIT License}[http://en.wikipedia.org/wiki/MIT_License]
