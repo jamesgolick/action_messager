@@ -16,6 +16,7 @@ spec = Gem::Specification.new do |s|
   
   s.add_dependency        'activesupport',      '>= 2.0.2'
   s.add_dependency        'xmpp4r-simple',      '>= 0.8.7'
+  s.add_dependency        'json_pure-1.1.2',      '>= 0.8.7'
 
   s.files                 = %w(LICENSE README Rakefile) +
                             Dir.glob("{lib,test,tasks}/**/*")
