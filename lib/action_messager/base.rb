@@ -1,5 +1,7 @@
 module ActionMessager
   class Base
+    include ActionController::UrlWriter if Object.const_defined?(:ActionController)
+
     class_inheritable_accessor :jabber_settings
     
     class << self
