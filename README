@@ -28,6 +28,15 @@ Then, wherever you'd like to send the notification:
   
 That's it!
 
+== Configuration
+
+You'll need to configure ActionMessager with your jabber credentials.
+
+  ActionMessager::Base.jabber_settings = {
+    :username => 'somebody@somejabberserver.com',
+    :password => 'swordfish!'
+  }
+
 == Credits
 
 ActionMessager was created, and is maintained by {James Golick}[http://jamesgolick.com].
